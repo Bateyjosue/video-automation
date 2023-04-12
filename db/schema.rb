@@ -10,8 +10,55 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_12_195132) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "description_templates", force: :cascade do |t|
+    t.text "template", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "presenters", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "twitter_handle"
+    t.string "linked_in"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "video_presenters", force: :cascade do |t|
+    t.bigint "video_id", null: false
+    t.bigint "presenter_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["presenter_id"], name: "index_video_presenters_on_presenter_id"
+    t.index ["video_id", "presenter_id"], name: "index_video_presenters_on_video_id_and_presenter_id", unique: true
+    t.index ["video_id"], name: "index_video_presenters_on_video_id"
+  end
+
+  create_table "video_resources", force: :cascade do |t|
+    t.string "url", null: false
+    t.string "title", null: false
+    t.bigint "video_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["video_id"], name: "index_video_resources_on_video_id"
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.string "youtube_id", null: false
+    t.string "title", null: false
+    t.string "tags", default: [], array: true
+    t.text "chapter_markers"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["youtube_id"], name: "index_videos_on_youtube_id", unique: true
+  end
+
+  add_foreign_key "video_presenters", "presenters"
+  add_foreign_key "video_presenters", "videos"
+  add_foreign_key "video_resources", "videos"
 end
