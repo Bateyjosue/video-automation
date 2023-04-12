@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_12_195132) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_12_201138) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -55,10 +55,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_12_195132) do
     t.text "chapter_markers"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "description_template_id", null: false
+    t.index ["description_template_id"], name: "index_videos_on_description_template_id"
     t.index ["youtube_id"], name: "index_videos_on_youtube_id", unique: true
   end
 
   add_foreign_key "video_presenters", "presenters"
   add_foreign_key "video_presenters", "videos"
   add_foreign_key "video_resources", "videos"
+  add_foreign_key "videos", "description_templates"
 end
