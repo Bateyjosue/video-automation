@@ -14,6 +14,6 @@
 class Video < ApplicationRecord
   belongs_to :description_template
   has_many :video_presenters
-  has_many :presentes, throght: :video_presenters
+  has_many :presenters, through: :video_presenters
   has_many :video_resources
 end

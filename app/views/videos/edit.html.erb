@@ -1,0 +1,26 @@
+<h1> Editing <%= @video.title%></h1>
+<%= form_for @video do |f| %>
+  <div>
+    <%= f.label :description_template, 'Description Template' %>
+    <select>
+      <%@description.each do |template|%>
+        <option value="<%= template.id%>">
+        <%= template.name%>|<%= template.id%>
+        </option>
+      <%end%>
+    </select>
+  </div>
+  <div>
+    <%= f.label :title, 'Title' %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :tags, 'Tags' %>
+    <%= f.text_area :tags %>
+  </div>
+  <div>
+    <%= f.label :chapter_markers, 'Chapter Markers' %>
+    <%= f.text_area :chapter_markers %>
+  </div>
+    <%= f.submit 'Edit Video' %>
+<% end %>
