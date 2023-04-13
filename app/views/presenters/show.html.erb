@@ -1,0 +1,14 @@
+<h1><%= @presenter.name%></h1>
+<ul>
+  <li>
+    <%= @presenter.twitter_handle%>
+  </li>
+  <li>
+    <%= @presenter.linked_in%>
+  </li>
+  <li>
+    <%= @presenter.role%>
+  </li>
+</ul>
+
+<%= link_to "Edit Presenter", edit_presenter_path(@presenter)%>

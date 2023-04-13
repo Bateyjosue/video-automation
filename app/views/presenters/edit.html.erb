@@ -1,0 +1,16 @@
+<h1>Update <%=@presenter.name%> Presenters</h1>
+<%= form_with model: @presenter, local: true, method: :patch do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, class: 'form-control' %>
+
+  <%= f.label :twitter_handle %>
+  <%= f.text_field :twitter_handle, class: 'form-control' %>
+
+  <%= f.label :linked_in %>
+  <%= f.text_field :linked_in, class: 'form-control' %>
+
+  <%= f.label :role %>
+  <%= f.text_field :role, class: 'form-control' %>
+
+  <%= f.submit 'Update', class: 'btn btn-primary' %>
+<% end %>
