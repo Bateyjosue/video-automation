@@ -20,8 +20,15 @@ class PresentersController < ApplicationController
   end
 
   def edit
+    @presenter = Presenter.find(params[:id])
+    
   end
   def update
+    @presenter = Presenter.find(params[:id])
+    @presenter.update(
+      presenter_params
+      )
+    redirect_to presenters_path(params[:id])
   end
 
   private
