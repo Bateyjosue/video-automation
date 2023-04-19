@@ -1,8 +1,23 @@
-<section class="container__videos pt-16">
-  <h1>Videos</h1>
-  <ul>
+<section class="container__videos p-8">
+  <h1 class="text-4xl ">Videos</h1>
+  <ul class="grid p-2 grid-cols-4 gap-2">
     <% @videos.each do |video|%>
-    <li><%= link_to video.title, video%></li>
+      <li class="flex gap-2 border relative">
+        <iframe 
+        width="120" 
+        height="80" 
+        src="https://www.youtube.com/embed/<%=video.youtube_id%>" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <%= link_to video.title, video, class: 'pt-2 text-1xl underline decoration-red-500 underline-offset-4 decoration-wavy text-gray-800 hover:text-blue-600' %>
+        <ul class='absolute bottom-2 left-32 text-xs flex gap-2'>
+          <% video.tags.map do |tag|%>
+            <li class="bg-gray-300 rounded-full px-2 py-1"><%= tag%></li>
+          <% end%>
+        </ul>
+      </li>
+      
     <% end %>
   </ul>
 </section>
