@@ -5,27 +5,27 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
 
   <body>
-    <header class="bg-gray-800">
-    <div class="logo">
-      <a>Video Automation</a>
-    </div>
-    <nav>
-      <ul>
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/presenters">Presenters</a>
-        </li>
-      </ul>
-    </nav>
+    <header class="bg-gray-800 text-white flex h-10 items-center px-12 py-12">
+      <div class="logo flex-auto w-14 ">
+        <a class="text-white text-3xl">Video Automation</a>
+      </div>
+      <nav class="flex-auto w-64">
+        <ul class="flex justify-normal gap-4">
+          <li class="hover:text-amber-500">
+            <a href="/">Home</a>
+          </li>
+          <li class="hover:text-amber-500">
+            <a href="/presenters">Presenters</a>
+          </li>
+        </ul>
+      </nav>
     </header>
     <%= yield %>
   </body>
