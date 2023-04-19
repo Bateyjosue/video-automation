@@ -1,29 +1,33 @@
-<h1><%= @video.title%></h1>
-<ul>
-  <li>
-    <iframe 
-      width="560" 
-      height="315" 
-      src="https://www.youtube.com/embed/<%=@video.youtube_id%>" 
-      title="YouTube video player" 
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </li>
-  <li>
-    <%= @video.title%>
-  </li>
-  <li>
-    <%= @video.tags%>
-  </li>
-  <li>
-    <%= @video.chapter_markers%>
-  </li>
-  <li>
-    <%= @video.description_template.template%>
-  </li>
-</ul>
 
-<%= link_to 'Edit',  edit_video_path(@video)%>
-
-
-
+<section class="container__video">
+  <h1 class="w-100 bg-gray-400 text-center py-4 text-3xl text-white"> <%= @video.title%></h1>
+  <ul class="flex gap-6 py-6 px-12"> 
+    <li>
+      <iframe 
+        width="560" 
+        height="315" 
+        src="https://www.youtube.com/embed/<%=@video.youtube_id%>" 
+        title="YouTube video player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </li>
+    <div class="leading-loose">
+    <li>
+      Tags: 
+      <ul class="flex gap-2">
+        <% @video.tags.map do |tag|%>
+          <li class="bg-sky-500 text-white rounded-md px-2 py-1/4"><%= tag%></li>
+        <% end%>
+      </ul>
+    </li>
+    <li>
+      Chapter Markers: 
+      <%= @video.chapter_markers%>
+    </li>
+    <li>
+      Template: <%= @video.description_template.template%>
+    </li>
+      <%= link_to 'Edit',  edit_video_path(@video), :class => "underline text-sky-500 underline-offset-4"%>
+    </div>
+  </ul>
+</section>
