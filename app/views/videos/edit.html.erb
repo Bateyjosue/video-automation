@@ -17,7 +17,7 @@
     </div>
     <div class="flex gap-8 py-2 px-6">
       <%= f.label :tags, 'Tags', :class => 'w-64' %>
-      <%= f.text_area :tags, :class => 'border p-2 text-gray-500 w-80 h-18 outline-transparent' %>
+      <%= f.text_area :tags, :value => @video.tags.join(','), :cols => 50, :rows => 5, :class => 'border p-2 text-gray-500 w-80 h-18 outline-transparent' %>
     </div>
     <div class="flex gap-8 py-2 px-6">
       <%= f.label :chapter_markers, 'Chapter Markers', :class => 'w-64' %>
