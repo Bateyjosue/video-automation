@@ -1,16 +1,24 @@
-<h1>Update <%=@presenter.name%> Presenters</h1>
-<%= form_with model: @presenter, local: true, method: :patch do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name, class: 'form-control' %>
-
-  <%= f.label :twitter_handle %>
-  <%= f.text_field :twitter_handle, class: 'form-control' %>
-
-  <%= f.label :linked_in %>
-  <%= f.text_field :linked_in, class: 'form-control' %>
-
-  <%= f.label :role %>
-  <%= f.text_field :role, class: 'form-control' %>
-
-  <%= f.submit 'Update', class: 'btn btn-primary' %>
-<% end %>
+<section class="container__video__show p-8">
+  <h1 class="text-4xl underline underline-offset-4 pb-4">Update <%=@presenter.name%> Presenters</h1>
+  <%= form_with model: @presenter, local: true, method: :patch, :class => '' do |f| %>
+    <div class="flex gap-8 py-2 px-6">
+      <%= f.label :name, class: 'w-64' %>
+      <%= f.text_field :name, class: 'border p-2 text-gray-500 w-80 h-10 outline-transparent' %>
+    </div >
+    <div class="flex gap-8 py-2 px-6"> 
+      <%= f.label :twitter_handle, class: 'w-64' %>
+      <%= f.text_field :twitter_handle, class: 'border p-2 text-gray-500 w-80 h-10 outline-transparent' %>
+    </div>
+    <div class="flex gap-8 py-2 px-6">
+      <%= f.label :linked_in, class: 'w-64' %>
+      <%= f.text_field :linked_in, class: 'border p-2 text-gray-500 w-80 h-10 outline-transparent' %>
+    </div>
+    <div class="flex gap-8 py-2 px-6">
+      <%= f.label :role, class: 'w-64' %>
+      <%= f.text_field :role, class: 'border p-2 text-gray-500 w-80 h-10 outline-transparent' %>
+    </div>
+    <div class="flex gap-8 py-2 px-6">
+      <%= f.submit 'Update',  class: 'w-50 bg-sky-500 text-white py-2 px-6 rounded-md' %>
+    </div>
+  <% end %>
+</section>
