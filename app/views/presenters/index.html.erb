@@ -1,9 +1,13 @@
-<section class="container__presenter">
-  <h1 class="w-100 bg-gray-400 text-center py-4 text-3xl text-white">Presenter's List</h1>
-  <%= link_to "Add New Presenter", new_presenter_path, class: '' %>
-  <ul>
+<section class="container__presenter p-8">
+  <h1 class="text-4xl mb-4">Presenter's List</h1>
+  <span class="material-symbols-outlined bg-sky-500 text-white px-1 py-1 rounded my-4">
+    <%= link_to "add", new_presenter_path, class: '' %>
+  </span>
+  <ul >
     <% @presenters.each do |presenter|%>
-    <li><%= link_to presenter.name, presenter%></li>
+    <li class='leading-8 presenter__item'> 
+      <%= link_to presenter.name, presenter, :class => 'underline text-sky-500 underline-offset-'%>
+    </li>
     <% end %>
   </ul>
 </section>
